@@ -1,0 +1,199 @@
+CREATE TABLE "customer_profile" (
+  "customer_id" serial PRIMARY KEY,
+  "customer_fn" varchar(50),
+  "customer_ln" varchar(50),
+  "customer_email" varchar(50)
+);
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('Toni', 'Morrison', 'sula@beloved.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('John', 'Steinbeck', 'lenny@therabbits.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('Ernest', 'Hemingway', 'forwhom@thebelltolls.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('Mark', 'Twain', 'huckleberry@finn.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('James', 'Baldwin', 'gotellit@onthemountain.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('Marper', 'Lee', 'tokill@mockingbird.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('J.D.', 'Salinger', 'catcher@rye.com')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email)
+values('Langston', 'Hughes', 'i@too.com')
+
+CREATE TABLE "employee_profile" (
+  "employee_id" serial PRIMARY KEY,
+  "employee_fn" varchar(50),
+  "employee_ln" varchar(50),
+  "job_title" varchar(20)
+);
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Albert', 'Camus', 'Sales')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Martin', 'Heidegger', 'Sales')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Fyodor', 'Dostoevsky', 'Sales')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Martin', 'Buber', 'Sales')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Simone', 'deBeauvoir', 'Sales')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Richard', 'Rorty', 'Mechanic')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Immanuel', 'Kant', 'Mechanic')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Gottlob', 'Frege', 'Mechanic')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Saul', 'Kripke', 'Mechanic')
+
+insert into employee_profile(employee_fn, employee_ln, job_title)
+values('Albert', 'Camus', 'Sales')
+
+CREATE TABLE "parts" (
+  "part_id" serial PRIMARY KEY,
+  "part_description" varchar(50),
+  "price" numeric(100, 2),
+  "service_id" integer
+);
+
+insert into parts(part_description, price)
+values('Thing', '40.87')
+
+insert into parts(part_description, price)
+values('Doohickey', '349.72')
+
+insert into parts(part_description, price)
+values('Whats it called', '298.12')
+
+insert into parts(part_description, price)
+values('Expensive Part', '720.50')
+
+
+CREATE TABLE "dealer_car" (
+  "d_car_id" serial PRIMARY KEY,
+  "is_used" bool,
+  "car_year" integer,
+  "car_make" varchar(20),
+  "car_model" varchar(40),
+  "price" numeric(100, 2)
+);
+
+insert into dealer_car(is_used, car_year, car_make, car_model, price)
+values('0', '21', 'Hyundai', 'Santa Fe', '28999.00')
+
+insert into dealer_car(is_used, car_year, car_make, car_model, price)
+values('0', '21', 'Honda', 'CRV', '22599.00')
+
+insert into dealer_car(is_used, car_year, car_make, car_model, price)
+values('1', '19', 'Ford', 'F-150', '34898.00')
+
+CREATE TABLE "customer_car" (
+  "c_car_id" serial PRIMARY KEY,
+  "customer_id" integer,
+  "car_year" integer,
+  "car_make" varchar(20),
+  "car_model" varchar(40)
+);
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('1', '21', 'Genesis', 'G80')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('1', '20', 'Lexus', 'ES')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('2', '21', 'Audi', 'A6')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('3', '18', 'Cadillac', 'CT5')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('4', '21', 'Jaguar', 'CT5')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('5', '19', 'Acura', 'TLX')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('6', '21', 'BMW', '5-Series')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('7', '21', 'Honda', 'Accord Hybrid')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('1', '19', 'BMW', 'X3')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('3', '21', 'Acura', 'RDX')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('5', '20', 'Mercedes', 'GLC-Class')
+
+insert into customer_car(customer_id, car_year, car_make, car_model)
+values('7', '21', 'Audi', 'Q5')
+
+CREATE TABLE "invoice" (
+  "invoice_id" serial PRIMARY KEY,
+  "transaction_date" date,
+  "customer_id" integer,
+  "purchase" bool,
+  "dealer_id" int,
+  "dealership_car_id" integer,
+  "service_id" integer,
+  "total" numeric(100, 2)
+);
+
+insert into invoice(transaction_date, customer_id, purchase, dealer_id, dealership_car_id, service_id, total)
+values('2021-11-05', '1', '1', '1', '1', '1','28999.00')
+
+insert into invoice(transaction_date, customer_id, purchase, dealer_id, dealership_car_id, service_id, total)
+values('2021-11-05', '4', '1', '5', '3', '2', '97.00')
+
+CREATE TABLE "service_invoice" (
+  "service_id" serial PRIMARY KEY,
+  "customer_car" integer,
+  "mechanic_id" integer,
+  "labor_hours" integer,
+  "parts" bool,
+  "parts_id" integer
+);
+
+insert into service_invoice(customer_car, mechanic_id, labor_hours, parts, parts_id)
+values('6', '7', '1', '1', '2')
+
+insert into service_invoice(customer_car, mechanic_id, labor_hours, parts, parts_id)
+values('2', '6', '7', '1', '3')
+
+ALTER TABLE "customer_car" ADD FOREIGN KEY ("customer_id") REFERENCES "customer_profile" ("customer_id");
+
+ALTER TABLE "service_invoice" ADD FOREIGN KEY ("customer_car") REFERENCES "customer_car" ("c_car_id");
+
+ALTER TABLE "service_invoice" ADD FOREIGN KEY ("mechanic_id") REFERENCES "employee_profile" ("employee_id");
+
+ALTER TABLE "invoice" ADD FOREIGN KEY ("customer_id") REFERENCES "customer_profile" ("customer_id");
+
+ALTER TABLE "invoice" ADD FOREIGN KEY ("dealership_car_id") REFERENCES "dealer_car" ("d_car_id");
+
+ALTER TABLE "invoice" ADD FOREIGN KEY ("service_id") REFERENCES "service_invoice" ("service_id");
+
+ALTER TABLE "parts" ADD FOREIGN KEY ("service_id") REFERENCES "service_invoice" ("service_id");
+
+ALTER TABLE "service_invoice" ADD FOREIGN KEY ("parts_id") REFERENCES "parts" ("part_id");
+
+ALTER TABLE "invoice" ADD FOREIGN KEY ("dealer_id") REFERENCES "employee_profile" ("employee_id");
